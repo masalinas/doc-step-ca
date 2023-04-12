@@ -181,7 +181,7 @@ https://localhost:9000/acme/acme/directory
 }
 ```
 
-## Use the ACME protocol
+## Use the ACME protocol
 
 We configure a ACME protocol client as cerbot to renew the certificates for a webserver
 
