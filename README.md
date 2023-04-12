@@ -1,7 +1,7 @@
 ## Description
 Documentation of step-ca certificates manager service
 
-## Running service
+## Install step-ca server
 
 ```
 docker run -it --name step-ca -v step:/home/step \
