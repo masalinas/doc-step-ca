@@ -10,11 +10,7 @@ docker run -it --name step-ca -v step:/home/step \
     -e "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,$(hostname -f)" \
     -e "DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true" \
     smallstep/step-ca
-```  
 
-Response
-
-```
 Generating root certificate... done!
 Generating intermediate certificate... done!
 
