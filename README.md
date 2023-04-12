@@ -57,6 +57,51 @@ badger 2023/04/12 17:59:21 INFO: Replay took: 37.875µs
 2023/04/12 17:59:21 Serving HTTPS on :9000 ...
 ```
 
+## Install step CLI
+
+In linux Debian OS
+
+```
+wget https://dl.step.sm/gh-release/cli/docs-cli-install/v0.23.4/step-cli_0.23.4_amd64.deb
+sudo dpkg -i step-cli_0.23.4_amd64.deb
+```
+
+In Mac OS
+
+```
+brew install step
+```
+
+## Configure step CLI
+
+```
+step ca bootstrap --ca-url localhost:9000 --fingerprint 4cbdddc13d630bd2fa58fe8caa19a2162b00870107ad882887ee03a0543498e6
+
+The root certificate has been saved in /Users/miguel/.step/certs/root_ca.crt.
+The authority configuration has been saved in /Users/miguel/.step/config/defaults.json.
+```
+
+## register certificates to be trusted from our CA
+
+```
+step certificate install $(step path)/certs/root_ca.crt
+```
+
+## Using the service
+
+Generating a private key and obtaining a signed certificate
+
+```
+step ca certificate svc.example.com svc.crt svc.key --ca-url localhost:9000
+
+Please enter the password to decrypt the provisioner key:
+✔ CA: https://localhost:9000
+✔ Certificate: svc.crt
+✔ Private Key: svc.key
+```
+
+We must introduce the CA administrative password to continue
+
 ## Some links
 
 * [step-ca dockerhub](https://hub.docker.com/r/smallstep/step-ca/)
