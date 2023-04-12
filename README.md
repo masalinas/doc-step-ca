@@ -57,7 +57,7 @@ badger 2023/04/12 17:59:21 INFO: Replay took: 37.875µs
 2023/04/12 17:59:21 Serving HTTPS on :9000 ...
 ```
 
-## Install step CLI
+## Install step CLI
 
 In linux Debian OS
 
