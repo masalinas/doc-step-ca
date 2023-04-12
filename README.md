@@ -103,7 +103,7 @@ Please enter the password to decrypt the provisioner key:
 
 We must introduce the CA administrative password to continue
 
-## An sample
+## Execute a simple webserver to test it
 
 Execute a http go server using these certificates
 
