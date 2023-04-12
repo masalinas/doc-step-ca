@@ -134,6 +134,8 @@ Execute a curl to recover the response
 
 ```
 curl https://localhost:9443/hi
+
+Hello, world!
 ```
 
 If we registe root CA certificate intro your system's trust store, the previous command works correctly, but we can pass the root CA certificate directly like this
