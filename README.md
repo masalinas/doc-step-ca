@@ -81,7 +81,7 @@ The root certificate has been saved in /Users/miguel/.step/certs/root_ca.crt.
 The authority configuration has been saved in /Users/miguel/.step/config/defaults.json.
 ```
 
-## register certificates to be trusted from our CA
+## Register certificates to be trusted from our CA
 
 ```
 step certificate install $(step path)/certs/root_ca.crt
