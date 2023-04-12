@@ -97,8 +97,8 @@ step ca certificate svc.example.com srv.crt srv.key --ca-url localhost:9000
 
 Please enter the password to decrypt the provisioner key:
 ✔ CA: https://localhost:9000
-✔ Certificate: svc.crt
-✔ Private Key: svc.key
+✔ Certificate: srv.crt
+✔ Private Key: srv.key
 ```
 
 We must introduce the CA administrative password to continue
