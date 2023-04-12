@@ -93,7 +93,7 @@ step certificate install $(step path)/certs/root_ca.crt
 Generating a private key and obtaining a signed certificate
 
 ```
-step ca certificate svc.example.com svc.crt svc.key --ca-url localhost:9000
+step ca certificate svc.example.com srv.crt srv.key --ca-url localhost:9000
 
 Please enter the password to decrypt the provisioner key:
 ✔ CA: https://localhost:9000
