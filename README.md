@@ -1,5 +1,5 @@
 ## Description
-Documentation of step-ca certificates manager service
+Documentation of step-ca CA Server
 
 ## Install step-ca server
 
@@ -70,6 +70,8 @@ brew install step
 
 ## Configure step CLI
 
+Configure step CLI. Download the root CA certificate and write CA connection details to $HOME/.step/config/defaults.json
+
 ```
 step ca bootstrap --ca-url localhost:9000 --fingerprint 4cbdddc13d630bd2fa58fe8caa19a2162b00870107ad882887ee03a0543498e6
 
@@ -77,7 +79,10 @@ The root certificate has been saved in /Users/miguel/.step/certs/root_ca.crt.
 The authority configuration has been saved in /Users/miguel/.step/config/defaults.json.
 ```
 
-## Register certificates to be trusted from our CA
+## Register certificates
+
+To establish system-wide trust of your CA, so your certificates will be trusted by curl and other programs. Execute
+this command to install your root CA certificate intro your system's trust store
 
 ```
 step certificate install $(step path)/certs/root_ca.crt
@@ -97,6 +102,54 @@ Please enter the password to decrypt the provisioner key:
 ```
 
 We must introduce the CA administrative password to continue
+
+## An sample
+
+Execute a http go server using these certificates
+
+```
+package main
+import (
+    "net/http"
+    "log"
+)
+func HiHandler(w http.ResponseWriter, req *http.Request) {
+    w.Header().Set("Content-Type", "text/plain")
+    w.Write([]byte("Hello, world!\n"))
+}
+func main() {
+    http.HandleFunc("/hi", HiHandler)
+    err := http.ListenAndServeTLS(":9443", "srv.crt", "srv.key", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+```
+go run srv.go &
+```
+
+Execute a curl to recover the response
+
+```
+curl https://localhost:9443/hi
+```
+
+If we registe root CA certificate intro your system's trust store, the previous command works correctly, but we can pass the root CA certificate directly like this
+
+First download the root CA
+
+```
+step ca root root.crt
+```
+
+Pass this certificate to curl command like this:
+
+```
+curl --cacert root.crt https://localhost:9443/hi
+```
+
 
 ## Some links
 
