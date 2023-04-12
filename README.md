@@ -1,5 +1,5 @@
 ## Description
-Documentation of step-ca CA Server
+Documentation of step-ca CA Server. step-ca is a private online certificate authority (CA) for secure, automated X.509 and SSH certificate management.
 
 ## Install step-ca server
 
